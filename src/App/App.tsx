@@ -1,30 +1,45 @@
+import Test1 from 'Test/Test1'
+import Test2 from 'Test/Test2'
 import { useState } from 'react'
-import './App.scss'
-type Props = {}
+type Props = {
 
+}
 const App = (props: Props) => {
 
+const [currencyType, setCurencyType] = useState<string>('USD')
+const [exchangeRate, setExchangeRate] = useState<number>(1)
+const [total,setTotal] = useState<number>(0)
+const totalAdd = (price:number) => {
+    setTotal(total + price)
+}
+const onChangeCurrencyToUsd = () => {
+    setCurencyType(() => 'USD')
+    setExchangeRate(1)
+}
+const onChangeCurrencyToUan = () => {
+    setCurencyType(() => 'UAN')
+    setExchangeRate(40)
+}
+const onChangeCurrencyToEur = () => {
+    setCurencyType(() => 'EUR')
+    setExchangeRate(0.94)
+}
 
-    const [count, setCount] = useState(0);
-    const [count2, setCount2] = useState(0);
-    const [count3, setCount3] = useState(0);
 
     return (
-        <>
-            <form className="application-form">
-                <h1>First task </h1>
-                <button type="button" onClick={() => setCount(count + 1)}>
-                    change count ({count})
-                </button>
 
-                <button type="button" onClick={() => setCount2(count2 + 1)}>
-                    change count ({count2})
-                </button>
-                
-                 <button type="button" onClick={() => setCount3(count3 + 1)}>
-                    change count ({count3})
-                 </button>
-            </form>
+        <>
+
+            <Test1/>
+            <Test2 
+                total={total}
+                totalAdd={totalAdd}
+                exchangeRate={exchangeRate}
+                currencyType={currencyType}
+                onChangeCurrencyToUsd={onChangeCurrencyToUsd}
+                onChangeCurrencyToUan={onChangeCurrencyToUan}
+                onChangeCurrencyToEur={onChangeCurrencyToEur}
+                />
         </>
     )
 }
