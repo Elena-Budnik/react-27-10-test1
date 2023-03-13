@@ -1,4 +1,5 @@
 import { Button, Card, CardActions, CardContent } from '@mui/material'
+import '../../Test/center.scss'
 
 type Props = {
     totalAdd: (price: number) => any
@@ -34,7 +35,7 @@ const PhoneItem = ({
                     </div>
                 </CardContent>
 
-                <CardActions className="btn-buy">
+                <CardActions className="center">
                     <Button variant="outlined" onClick={() => totalAdd(price)}>
                         Buy
                     </Button>
